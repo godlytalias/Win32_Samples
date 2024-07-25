@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Win32BGClass.h"
+#include "ToastNotificationCreator.h"
 
 using namespace winrt;
 namespace winrt
@@ -9,19 +10,17 @@ namespace winrt
 
 namespace winrt::WinMainCOMBGTaskSample {
 
-        void Win32BGTask::Run(_In_ IBackgroundTaskInstance taskInstance)
+        void __stdcall Win32BGTask::Run(_In_ IBackgroundTaskInstance taskInstance)
         {
-            OutputDebugString(L"BG Task Run");
-
             taskInstance.Canceled({ this, &Win32BGTask::OnCanceled });
 
             TaskDeferral = taskInstance.GetDeferral();
+            ToastNotificationCreator(true);
 
-            //check_bool(SetEvent(Win32BGTaskFactory::_taskFactoryCompletionEvent.get()));
             TaskDeferral.Complete();
         }
 
-        void Win32BGTask::OnCanceled(_In_ IBackgroundTaskInstance /* taskInstance */, _In_ BackgroundTaskCancellationReason /* cancelReason */)
+        void __stdcall Win32BGTask::OnCanceled(_In_ IBackgroundTaskInstance /* taskInstance */, _In_ BackgroundTaskCancellationReason /* cancelReason */)
         {
             OutputDebugString(L"BG Task Cancelled");
             IsCanceled = true;

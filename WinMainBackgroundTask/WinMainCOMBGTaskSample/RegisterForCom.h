@@ -5,9 +5,10 @@ namespace winrt::WinMainCOMBGTaskSample
 {
 	class RegisterForCom
 	{
-		~RegisterForCom();
 		DWORD ComRegistrationToken = 0;
-		static constexpr char* RegisterForComToken = "-RegisterForBGTaskServer";
-		winrt::hresult RegisterAndWaitSingle(winrt::guid classId);
+	public:
+		~RegisterForCom();
+		winrt::hresult RegisterAndWait(winrt::guid classId);
+		static constexpr wchar_t* RegisterForComToken = L"-RegisterForBGTaskServer";
 	};
 }

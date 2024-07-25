@@ -4,7 +4,7 @@
 
 namespace winrt::WinMainCOMBGTaskSample
 {
-	#define CLSID_Win32BGTask "1498AA14-E11E-48C8-912A-BCEBF27E19AC"
+	#define CLSID_Win32BGTask "12345678-1234-1234-1234-1234567890AB"
 
 
 	struct __declspec(uuid(CLSID_Win32BGTask))

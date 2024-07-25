@@ -30,7 +30,7 @@ namespace winrt::WinMainCOMBGTaskSample::implementation
 
     void MainWindow::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {
-        myButton().Content(box_value(L"Clicked"));
+        myButton().Content(box_value(L"BG Task Registered, Delete Toast Notification to trigger BG Task"));
         RegisterTask(winrt::ToastNotificationHistoryChangedTrigger(), L"Win32BGTask", __uuidof(Win32BGTask), true);
         ToastNotificationCreator();
     }

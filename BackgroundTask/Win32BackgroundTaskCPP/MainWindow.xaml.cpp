@@ -6,6 +6,7 @@
 #include <winrt/Windows.ApplicationModel.Background.h>
 #include "winrt/Windows.UI.Notifications.h"
 #include "winrt/Windows.Data.Xml.Dom.h"
+#include "winrt/Windows.Storage.h"
 
 using namespace winrt;
 using namespace winrt::Windows::Foundation;
@@ -13,6 +14,7 @@ using namespace Microsoft::UI::Xaml;
 using namespace Windows::Data::Xml::Dom;
 using namespace Windows::UI::Notifications;
 using namespace Windows::ApplicationModel::Background;
+using namespace Windows::Storage;
 using namespace std;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -35,6 +37,21 @@ namespace winrt::Win32BackgroundTaskCPP::implementation
         myButton().Content(box_value(L"BG Task Registered, Check Notifications"));
         BackgroundTaskBuilder builder;
         builder.Name(L"SampleBackgroundTask");
+        //StorageFolder folder = co_await StorageFolder::GetFolderFromPathAsync(L"C:\\Users\\godlyalias\\Downloads\\");
+        //StorageLibraryChangeTracker tracker = folder.TryGetChangeTracker();
+        //if (tracker != nullptr)
+        //{
+        //    tracker.Enable();
+        //    StorageLibraryChangeTrackerTrigger trigger{ tracker };
+        //    auto backgroundTrigger = trigger.as<IBackgroundTrigger>();
+        //    builder.SetTrigger(backgroundTrigger);
+        //    builder.TaskEntryPoint(L"BackgroundTaskCPP.Class");
+        //    builder.Register();
+        //    createNotification();
+        //}
+
+        //MaintenanceTrigger trigger{ 15, false };
+
         ToastNotificationHistoryChangedTrigger trigger;
         auto backgroundTrigger = trigger.as<IBackgroundTrigger>();
         builder.SetTrigger(backgroundTrigger);

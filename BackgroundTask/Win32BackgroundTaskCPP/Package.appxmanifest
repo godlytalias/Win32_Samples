@@ -5,17 +5,18 @@
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="33e34c9b-37f4-4255-843f-b69f0e865d50"
+    Name="33e34c9b-37f4-4255-843f-b69f0e865d53"
     Publisher="CN=godlyalias"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="33e34c9b-37f4-4255-843f-b69f0e865d50" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Win32BackgroundTaskCPP</DisplayName>
+    <DisplayName>Win32BackgroundTaskCPP2</DisplayName>
     <PublisherDisplayName>godlyalias</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -34,8 +35,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Win32BackgroundTaskCPP"
-        Description="Win32BackgroundTaskCPP"
+        DisplayName="Win32BackgroundTaskCPP2"
+        Description="Win32BackgroundTaskCPP2"
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">
@@ -47,8 +48,18 @@
           <BackgroundTasks>
             <Task Type="systemEvent"/>
             <Task Type="timer"/>
+            <Task Type="general"/>
+            <uap:Task Type="mediaProcessing"/>
+            <Task Type="deviceUse"/>
           </BackgroundTasks>
         </Extension>
+			  <com:Extension Category="windows.comServer">
+				  <com:ComServer>
+					  <com:ExeServer Executable="Win32BackgroundTaskCPP.exe" Arguments="-RegisterForBGTaskServer" DisplayName="Win32BackgroundTaskCPP">
+						  <com:Class Id="12345678-1234-1234-1234-1234567890CD" DisplayName="Win32BackgroundTaskCPP Win32BGTask" />
+					  </com:ExeServer>
+				  </com:ComServer>
+			  </com:Extension>
       </Extensions>
     </Application>
   </Applications>

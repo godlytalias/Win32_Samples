@@ -1,9 +1,12 @@
 #include "pch.h"
 #include "App.xaml.h"
 #include "MainWindow.xaml.h"
+#include "RegisterForCOM.h"
+#include "Win32BGClass.h"
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
+using namespace winrt::Win32BackgroundTaskCPP;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -40,4 +43,36 @@ namespace winrt::Win32BackgroundTaskCPP::implementation
         window = make<MainWindow>();
         window.Activate();
     }
+}
+
+int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nShowCmd)
+{
+    winrt::init_apartment(winrt::apartment_type::single_threaded);
+    OutputDebugString(L"This is command line args: ");
+    OutputDebugString(lpCmdLine);
+
+    if (std::wcsncmp(lpCmdLine, RegisterForCom::RegisterForComToken, sizeof(RegisterForCom::RegisterForComToken)) == 0)
+    {
+        RegisterForCom comRegister;
+        comRegister.RegisterAndWait(__uuidof(Win32BGTask));
+        MSG msg;
+
+        while (-1 != GetMessage(&msg, NULL, 0, 0) &&
+            WM_QUIT != msg.message)
+        {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+    }
+    else
+    {
+        // put your fancy code somewhere here
+        ::winrt::Microsoft::UI::Xaml::Application::Start(
+            [](auto&&)
+            {
+                ::winrt::make<::winrt::Win32BackgroundTaskCPP::implementation::App>();
+            });
+    }
+
+    return 0;
 }

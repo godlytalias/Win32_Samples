@@ -12,9 +12,15 @@
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="Win32BGClass.cpp" />
+    <ClCompile Include="ToastNotificationCreator.cpp" />
+    <ClCompile Include="RegisterForCOM.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Win32BGClass.h" />
+    <ClInclude Include="ToastNotificationCreator.h" />
+    <ClInclude Include="RegisterForCOM.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -55,5 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
   </ItemGroup>
 </Project>

@@ -8,8 +8,12 @@ using HelloAppServices.Extension;
 
 namespace HelloAppServices.Extension
 {
-    public sealed partial class MyFancyAppService : IMyFancyAppService
+    public sealed partial class MyFancyAppService : AppServiceComponent, IMyFancyAppService
     {
+        public MyFancyAppService(string appServiceName) : base(appServiceName)
+        {
+        }
+
         public async Task<int> SumAsync(int x, int y)
         {
             return x + y;

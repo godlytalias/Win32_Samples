@@ -3,7 +3,8 @@
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
-  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+    xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+    xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
   IgnorableNamespaces="uap mp">
 
   <Identity
@@ -42,7 +43,14 @@
       </uap:VisualElements>
     </Application>
   </Applications>
-
+	<Extensions>
+		<desktop:Extension
+			Category="windows.fullTrustProcess"
+			Executable="HelloAppServices.Extension\HelloAppServices.Extension.exe" />
+		<uap:Extension Category="windows.appService">
+			<uap:AppService Name="MyFancyAppService" />
+		</uap:Extension>
+	</Extensions>
   <Capabilities>
     <Capability Name="internetClient" />
   </Capabilities>

@@ -25,13 +25,13 @@ namespace winrt::PlainCppWinui::implementation
 
     MenuFlyout MainWindow::createFlyout()
     {
-		m_flyout = MenuFlyout();
-		m_flyout.Opened({ this, &MainWindow::flyoutOpened });
-		RadioMenuFlyoutItem item = RadioMenuFlyoutItem();
-		item.Icon(m_icon);
-		item.Text(L"Hello World");
+	    m_flyout = MenuFlyout();
+	    m_flyout.Opened({ this, &MainWindow::flyoutOpened });
+	    RadioMenuFlyoutItem item = RadioMenuFlyoutItem();
+	    item.Icon(m_icon);
+	    item.Text(L"Hello World");
         m_flyout.Items().Append(item);
-		return m_flyout;
+	    return m_flyout;
     }
     int32_t MainWindow::MyProperty()
     {
@@ -49,8 +49,8 @@ namespace winrt::PlainCppWinui::implementation
         m_icon.UriSource(Windows::Foundation::Uri(L"ms-appx:///Assets/StoreLogo.png"));
     }
 
-	void MainWindow::flyoutOpened(IInspectable const& handler, IInspectable const&)
-	{
+    void MainWindow::flyoutOpened(IInspectable const& handler, IInspectable const&)
+    {
         // Below operations mimics async operations of re-parenting BitmapIcon to another RadioMenuFlyoutItem
         Microsoft::UI::Dispatching::DispatcherQueue queue = Microsoft::UI::Dispatching::DispatcherQueue::GetForCurrentThread();
         queue.TryEnqueue([this] {
@@ -58,11 +58,12 @@ namespace winrt::PlainCppWinui::implementation
             //FIX: Uncomment below function call to fix issue with icon re-parenting
             //fixIconIssue();
             RadioMenuFlyoutItem item2 = RadioMenuFlyoutItem();
+            // FIXME: At this point, m_icon gets re-parented which causes association failures
             item2.Icon(m_icon);
             item2.Text(L"Hello World");
             m_flyout.Items().Append(item2);
         });
-	}
+    }
 
     void MainWindow::myButton_Click(IInspectable const&, RoutedEventArgs const&)
     {

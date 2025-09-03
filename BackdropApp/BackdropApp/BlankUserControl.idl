@@ -1,0 +1,10 @@
+namespace BackdropApp
+{
+    [default_interface]
+    runtimeclass BlankUserControl : Microsoft.UI.Xaml.Controls.UserControl
+    {
+        BlankUserControl();
+        Microsoft.UI.Xaml.Window CurrentWindow;
+        void init();
+    }
+}

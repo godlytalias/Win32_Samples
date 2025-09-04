@@ -1,0 +1,9 @@
+namespace PropertySheetWinUI
+{
+    [default_interface]
+    runtimeclass WinUIPropertySheet
+    {
+        WinUIPropertySheet();
+        void CreatePropertySheet();
+    }
+}

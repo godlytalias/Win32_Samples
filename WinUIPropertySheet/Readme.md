@@ -10,6 +10,9 @@ This solution consists of three interconnected projects that work together to pr
 - **PropertySheetPage** - Property sheet page implementations  
 - **PropertySheetWinUI** - WinUI 3 property sheet control
 
+<img width="1778" height="843" alt="image" src="https://github.com/user-attachments/assets/9c3717fe-ab44-4e32-b7b0-f27b45c0841f" />
+
+
 ## Projects
 
 ### PropertySheetApp

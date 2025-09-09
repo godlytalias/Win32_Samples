@@ -2,6 +2,7 @@
 #include "Windows.Foundation.h"
 #include "WinUIPropertySheet.g.h"
 #include <winrt/Microsoft.UI.Xaml.Hosting.h>
+#include <PropertySheetHostApp.h>
 
 namespace winrt::PropertySheetWinUI::implementation
 {
@@ -12,8 +13,8 @@ namespace winrt::PropertySheetWinUI::implementation
         void ApplyPropertySheetWindowStyle();
 
 		winrt::Microsoft::UI::Dispatching::DispatcherQueueController m_dispatcherQueueControler{ nullptr };
-		winrt::Microsoft::UI::Xaml::Hosting::WindowsXamlManager m_windowsXamlManager{ nullptr };
 		winrt::PropertySheetWinUI::PropSheetWindow m_window{ nullptr };
+		winrt::Microsoft::UI::Xaml::Application m_xamlApplication{ nullptr };
     };
 }
 

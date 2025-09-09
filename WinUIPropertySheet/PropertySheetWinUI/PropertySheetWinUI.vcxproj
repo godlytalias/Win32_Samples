@@ -104,6 +104,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="App.xaml.g.h" />
+    <ClInclude Include="PropertySheetHostApp.h" />
     <ClInclude Include="PropSheetWindow.xaml.h">
       <DependentUpon>PropSheetWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -114,6 +116,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PropertySheetHostApp.cpp" />
     <ClCompile Include="PropSheetWindow.xaml.cpp">
       <DependentUpon>PropSheetWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

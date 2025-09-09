@@ -13,9 +13,12 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="WinUIPropertySheet.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="PropertySheetHostApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="App.xaml.g.h" />
+    <ClInclude Include="PropertySheetHostApp.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PropertySheet.def" />

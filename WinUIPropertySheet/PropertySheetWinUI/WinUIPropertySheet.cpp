@@ -6,6 +6,7 @@
 #include <winrt/PropertySheetWinUI.h>
 #include <microsoft.ui.xaml.window.h>
 #include <winrt/Microsoft.UI.Windowing.h>
+#include <winrt/Microsoft.UI.Xaml.XamlTypeInfo.h>
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -15,7 +16,7 @@ namespace winrt::PropertySheetWinUI::implementation
     WinUIPropertySheet::WinUIPropertySheet()
     {
         m_dispatcherQueueControler = winrt::Microsoft::UI::Dispatching::DispatcherQueueController::CreateOnCurrentThread();
-        m_windowsXamlManager = winrt::Microsoft::UI::Xaml::Hosting::WindowsXamlManager::InitializeForCurrentThread();
+        m_xamlApplication = winrt::make<PropertySheetHostApp>();
 	}
 
     HWND GetWindowHandle(winrt::Microsoft::UI::Xaml::Window const& window)
@@ -41,7 +42,7 @@ namespace winrt::PropertySheetWinUI::implementation
 
     void WinUIPropertySheet::CreatePropertySheet()
     {
-        m_window = winrt::PropertySheetWinUI::PropSheetWindow();
-        ApplyPropertySheetWindowStyle();
+                m_window = winrt::PropertySheetWinUI::PropSheetWindow();
+                ApplyPropertySheetWindowStyle();
     }
 }

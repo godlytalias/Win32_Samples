@@ -10,5 +10,6 @@
     Title="PropSheetWindow">
 
     <Grid x:Name="Root">
+        <TabView IsAddTabButtonVisible="False" x:Name="PropertySheetTabView"></TabView>
     </Grid>
 </Window>

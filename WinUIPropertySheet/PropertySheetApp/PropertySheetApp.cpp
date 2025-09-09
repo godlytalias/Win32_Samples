@@ -159,7 +159,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			PropSheetHeader.pages().Append(propSheetPageGeneral);
 			PropSheetHeader.pages().Append(propSheetPageAdvanced);
 
-			auto propSheetGeneralPage = CreateGeneralPropertySheetPage();
             switch (wmId)
             {
             case ID_PROPERTYSHEET_SHOWPROPERTYSHEET:
@@ -212,3 +211,4 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     }
     return (INT_PTR)FALSE;
 }
+

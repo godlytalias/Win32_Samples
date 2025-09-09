@@ -104,6 +104,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AdvancedPage.xaml.h">
+      <DependentUpon>AdvancedPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="GeneralPage.xaml.h">
       <DependentUpon>GeneralPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -111,6 +115,10 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdvancedPage.xaml.cpp">
+      <DependentUpon>AdvancedPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="GeneralPage.xaml.cpp">
       <DependentUpon>GeneralPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -130,11 +138,18 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AdvancedPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GeneralPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Midl Include="AdvancedPage.idl">
+      <DependentUpon>AdvancedPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="GeneralPage.idl">
       <DependentUpon>GeneralPage.xaml</DependentUpon>
       <SubType>Code</SubType>

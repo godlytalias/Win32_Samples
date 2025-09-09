@@ -126,6 +126,12 @@ winrt::PropertySheetWinUI::IWinUIPropSheetPage CreateGeneralPropertySheetPage()
 	return WinUIPropSheetPage;
 }
 
+winrt::PropertySheetWinUI::IWinUIPropSheetPage CreateAdvancedPropertySheetPage()
+{
+    auto WinUIPropSheetPage = winrt::PropertySheetPage::AdvancedPage();
+    return WinUIPropSheetPage;
+}
+
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -148,8 +154,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             propsheet = winrt::PropertySheetWinUI::WinUIPropertySheet();
 			auto PropSheetHeader = winrt::PropertySheetWinUI::WinUIPropSheetHeader();
 			PropSheetHeader.Caption(L"Property Sheet Example");
-            auto propSheetPage = CreateGeneralPropertySheetPage();
-			PropSheetHeader.pages().Append(propSheetPage);
+            auto propSheetPageGeneral = CreateGeneralPropertySheetPage();
+            auto propSheetPageAdvanced = CreateAdvancedPropertySheetPage();
+			PropSheetHeader.pages().Append(propSheetPageGeneral);
+			PropSheetHeader.pages().Append(propSheetPageAdvanced);
 
 			auto propSheetGeneralPage = CreateGeneralPropertySheetPage();
             switch (wmId)

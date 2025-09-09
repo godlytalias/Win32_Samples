@@ -28,5 +28,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="GeneralPage.xaml" />
+    <Page Include="AdvancedPage.xaml" />
   </ItemGroup>
 </Project>

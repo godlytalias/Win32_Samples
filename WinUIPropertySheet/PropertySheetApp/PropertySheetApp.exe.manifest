@@ -16,15 +16,18 @@
     <activatableClass name="PropertySheet.PropSheetWindow"
                       threadingModel="both"
                       xmlns="urn:schemas-microsoft-com:winrt.v1" />
-	  <activatableClass name="PropertySheet.PropSheetHeader"
+	  <activatableClass name="PropertySheet.WinUIPropSheetHeader"
 						threadingModel="both"
 						xmlns="urn:schemas-microsoft-com:winrt.v1" />
-	  <activatableClass name="PropertySheet.PropSheetPage"
+	  <activatableClass name="PropertySheet.IWinUIPropSheetPage"
 						threadingModel="both"
 						xmlns="urn:schemas-microsoft-com:winrt.v1" />
   </file>
 	<file name="PropertySheetPage.dll">
-		<activatableClass name="PropertySheetPage.Page"
+		<activatableClass name="PropertySheetPage.GeneralPage"
+						  threadingModel="both"
+						  xmlns="urn:schemas-microsoft-com:winrt.v1" />
+		<activatableClass name="PropertySheetPage.AdvancedPage"
 						  threadingModel="both"
 						  xmlns="urn:schemas-microsoft-com:winrt.v1" />
 	</file>

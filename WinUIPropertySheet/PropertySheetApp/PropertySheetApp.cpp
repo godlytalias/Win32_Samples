@@ -120,12 +120,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
-winrt::PropertySheetWinUI::WinUIPropSheetPage CreateGeneralPropertySheetPage()
+winrt::PropertySheetWinUI::IWinUIPropSheetPage CreateGeneralPropertySheetPage()
 {
-	auto WinUIPropSheetPage = winrt::PropertySheetWinUI::WinUIPropSheetPage();
-    auto propsheetpageContent = winrt::PropertySheetPage::GeneralPage();
-    WinUIPropSheetPage.Title(L"General Page");
-    WinUIPropSheetPage.Content(propsheetpageContent.as<winrt::Microsoft::UI::Xaml::UIElement>());
+	auto WinUIPropSheetPage = winrt::PropertySheetPage::GeneralPage();
 	return WinUIPropSheetPage;
 }
 

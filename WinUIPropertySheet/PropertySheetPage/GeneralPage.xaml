@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <TextBlock Text="Hello, World!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+        <TextBlock x:Name="ContentTextBlock" Text="Hello, World!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
 
     </Grid>
 </UserControl>

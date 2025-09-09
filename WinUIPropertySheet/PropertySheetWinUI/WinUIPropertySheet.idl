@@ -1,17 +1,11 @@
 namespace PropertySheetWinUI
 {
-    interface IPropSheetPageCallbacks
+    interface IWinUIPropSheetPage
     {
         void OnSave();
+        String GetTitle();
+        Microsoft.UI.Xaml.UIElement GetXamlContent();
 	}
-
-    [default_interface]
-    runtimeclass WinUIPropSheetPage
-    {
-        WinUIPropSheetPage();
-        String Title;
-		Microsoft.UI.Xaml.UIElement Content;
-    }
 
     [default_interface]
     runtimeclass WinUIPropSheetHeader
@@ -19,7 +13,7 @@ namespace PropertySheetWinUI
         WinUIPropSheetHeader();
 	    Boolean IsWizard;
 	    String Caption;
-        Windows.Foundation.Collections.IVector<WinUIPropSheetPage> pages;
+        Windows.Foundation.Collections.IVector<IWinUIPropSheetPage> pages;
     }
 
     [default_interface]

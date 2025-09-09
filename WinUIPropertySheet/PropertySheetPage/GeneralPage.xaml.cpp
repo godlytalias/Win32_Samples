@@ -3,6 +3,7 @@
 #if __has_include("GeneralPage.g.cpp")
 #include "GeneralPage.g.cpp"
 #endif
+#include <winrt/Microsoft.UI.Xaml.h>
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -12,4 +13,16 @@ using namespace Microsoft::UI::Xaml;
 
 namespace winrt::PropertySheetPage::implementation
 {
+	void GeneralPage::OnSave()
+	{
+		ContentTextBlock().Text(L"General Page Saved");
+	}
+	winrt::hstring GeneralPage::GetTitle()
+	{
+		return L"General Page";
+	}
+	winrt::Microsoft::UI::Xaml::UIElement GeneralPage::GetXamlContent()
+	{
+		return *this;
+	}
 }

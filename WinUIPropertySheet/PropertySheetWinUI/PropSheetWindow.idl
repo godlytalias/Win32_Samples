@@ -6,6 +6,7 @@ namespace PropertySheetWinUI
     runtimeclass PropSheetWindow : Microsoft.UI.Xaml.Window
     {
         PropSheetWindow();
-	    void AddPage(WinUIPropSheetPage page);
+	    void AddPage(IWinUIPropSheetPage page);
+		event Windows.Foundation.TypedEventHandler<IInspectable, Microsoft.UI.Xaml.RoutedEventArgs> PropertySheetSave;
     }
 }

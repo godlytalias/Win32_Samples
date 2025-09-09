@@ -1,7 +1,7 @@
 namespace PropertySheetPage
 {
     [default_interface]
-	runtimeclass GeneralPage : Microsoft.UI.Xaml.Controls.UserControl
+	runtimeclass GeneralPage : Microsoft.UI.Xaml.Controls.UserControl, PropertySheetWinUI.IWinUIPropSheetPage
     {
         GeneralPage();
     }

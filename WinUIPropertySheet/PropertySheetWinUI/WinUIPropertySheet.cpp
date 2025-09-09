@@ -6,9 +6,6 @@
 #if __has_include("WinUIPropSheetHeader.g.cpp")
 #include "WinUIPropSheetHeader.g.cpp"
 #endif
-#if __has_include("WinUIPropSheetPage.g.cpp")
-#include "WinUIPropSheetPage.g.cpp"
-#endif
 #include <winrt/PropertySheetWinUI.h>
 #include <microsoft.ui.xaml.window.h>
 #include <winrt/Microsoft.UI.Windowing.h>
@@ -51,9 +48,16 @@ namespace winrt::PropertySheetWinUI::implementation
         m_window = winrt::PropertySheetWinUI::PropSheetWindow();
         ApplyPropertySheetWindowStyle();
 		m_window.Title(header.Caption());
+        m_propSheetHeader = header;
 		for (const auto& page : header.pages())
 		{
 			m_window.AddPage(page);
 		}
+        m_PropertySheetRevoker = m_window.PropertySheetSave(winrt::auto_revoke, [this](auto&&, auto&&) {
+            for (const auto& page : m_propSheetHeader.pages())
+            {
+				page.OnSave();
+            }
+		});
     }
 }

@@ -14,8 +14,8 @@
             <TabView IsAddTabButtonVisible="False" x:Name="PropertySheetTabView"></TabView>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Width="100" Content="OK"/>
-            <Button Width="100" Content="Apply"/>
+            <Button Width="100" Content="OK" Click="OnOkClickedEvent"/>
+            <Button Width="100" Content="Apply" Click="OnApplyClickedEvent"/>
         </StackPanel>
     </StackPanel>
 </Window>

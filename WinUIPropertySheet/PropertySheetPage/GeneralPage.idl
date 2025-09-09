@@ -1,0 +1,8 @@
+namespace PropertySheetPage
+{
+    [default_interface]
+	runtimeclass GeneralPage : Microsoft.UI.Xaml.Controls.UserControl
+    {
+        GeneralPage();
+    }
+}

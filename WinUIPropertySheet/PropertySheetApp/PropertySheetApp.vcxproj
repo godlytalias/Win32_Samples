@@ -180,6 +180,9 @@
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PropertySheetPage\PropertySheetPage.vcxproj">
+      <Project>{ac5bc1e7-2e3a-4ea7-add8-984608009ebd}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\PropertySheetWinUI\PropertySheetWinUI.vcxproj">
       <Project>{fdc43cb3-dcac-4f7d-83ca-48adedb64a54}</Project>
     </ProjectReference>

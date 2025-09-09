@@ -12,13 +12,13 @@ using namespace Microsoft::UI::Xaml;
 
 namespace winrt::PropertySheetWinUI::implementation
 {
-    int32_t PropSheetWindow::MyProperty()
+    void PropSheetWindow::AddPage(winrt::PropertySheetWinUI::WinUIPropSheetPage page)
     {
-        throw hresult_not_implemented();
-    }
-
-    void PropSheetWindow::MyProperty(int32_t /* value */)
-    {
-        throw hresult_not_implemented();
-    }
+        auto tabViewItem = winrt::Microsoft::UI::Xaml::Controls::TabViewItem();
+        tabViewItem.Header(winrt::box_value(page.Title()));
+        tabViewItem.Content(page.Content());
+        tabViewItem.IsClosable(false);
+        PropertySheetTabView().TabItems().Append(tabViewItem);
+        PropertySheetTabView().SelectedItem(tabViewItem);
+	}
 }

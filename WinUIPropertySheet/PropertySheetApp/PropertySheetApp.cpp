@@ -4,7 +4,9 @@
 #include "framework.h"
 #include "PropertySheetApp.h"
 #include "winrt/PropertySheetWinUI.h"
+#include "winrt/PropertySheetPage.h"
 #include <WindowsAppSDK-VersionInfo.h>
+#include <winrt/windows.foundation.collections.h>
 #include <MddBootstrap.h>
 
 #define MAX_LOADSTRING 100
@@ -118,6 +120,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
+winrt::PropertySheetWinUI::WinUIPropSheetPage CreateGeneralPropertySheetPage()
+{
+	auto WinUIPropSheetPage = winrt::PropertySheetWinUI::WinUIPropSheetPage();
+    auto propsheetpageContent = winrt::PropertySheetPage::GeneralPage();
+    WinUIPropSheetPage.Title(L"General Page");
+    WinUIPropSheetPage.Content(propsheetpageContent.as<winrt::Microsoft::UI::Xaml::UIElement>());
+	return WinUIPropSheetPage;
+}
+
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -137,12 +148,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             int wmId = LOWORD(wParam);
             // Parse the menu selections:
-            auto factory = winrt::get_activation_factory<winrt::PropertySheetWinUI::WinUIPropertySheet>();
-            propsheet = factory.ActivateInstance<winrt::PropertySheetWinUI::WinUIPropertySheet>();
+            propsheet = winrt::PropertySheetWinUI::WinUIPropertySheet();
+			auto PropSheetHeader = winrt::PropertySheetWinUI::WinUIPropSheetHeader();
+			PropSheetHeader.Caption(L"Property Sheet Example");
+            auto propSheetPage = CreateGeneralPropertySheetPage();
+			PropSheetHeader.pages().Append(propSheetPage);
+
+			auto propSheetGeneralPage = CreateGeneralPropertySheetPage();
             switch (wmId)
             {
             case ID_PROPERTYSHEET_SHOWPROPERTYSHEET:
-                propsheet.CreatePropertySheet();
+                propsheet.CreatePropertySheet(PropSheetHeader);
                 break;
             case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);

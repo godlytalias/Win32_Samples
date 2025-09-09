@@ -1,9 +1,11 @@
+#include "WinUIPropertySheet.idl"
+
 namespace PropertySheetWinUI
 {
     [default_interface]
     runtimeclass PropSheetWindow : Microsoft.UI.Xaml.Window
     {
         PropSheetWindow();
-        Int32 MyProperty;
+	    void AddPage(WinUIPropSheetPage page);
     }
 }

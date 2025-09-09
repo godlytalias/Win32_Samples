@@ -3,6 +3,12 @@
 #if __has_include("WinUIPropertySheet.g.cpp")
 #include "WinUIPropertySheet.g.cpp"
 #endif
+#if __has_include("WinUIPropSheetHeader.g.cpp")
+#include "WinUIPropSheetHeader.g.cpp"
+#endif
+#if __has_include("WinUIPropSheetPage.g.cpp")
+#include "WinUIPropSheetPage.g.cpp"
+#endif
 #include <winrt/PropertySheetWinUI.h>
 #include <microsoft.ui.xaml.window.h>
 #include <winrt/Microsoft.UI.Windowing.h>
@@ -40,9 +46,14 @@ namespace winrt::PropertySheetWinUI::implementation
         }
     }
 
-    void WinUIPropertySheet::CreatePropertySheet()
+    void WinUIPropertySheet::CreatePropertySheet(winrt::PropertySheetWinUI::WinUIPropSheetHeader const& header)
     {
-                m_window = winrt::PropertySheetWinUI::PropSheetWindow();
-                ApplyPropertySheetWindowStyle();
+        m_window = winrt::PropertySheetWinUI::PropSheetWindow();
+        ApplyPropertySheetWindowStyle();
+		m_window.Title(header.Caption());
+		for (const auto& page : header.pages())
+		{
+			m_window.AddPage(page);
+		}
     }
 }

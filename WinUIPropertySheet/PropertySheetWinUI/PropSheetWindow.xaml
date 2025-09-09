@@ -9,7 +9,13 @@
     mc:Ignorable="d"
     Title="PropSheetWindow">
 
-    <Grid x:Name="Root">
-        <TabView IsAddTabButtonVisible="False" x:Name="PropertySheetTabView"></TabView>
-    </Grid>
+    <StackPanel Orientation="Vertical">
+        <StackPanel x:Name="Root" Height="500">
+            <TabView IsAddTabButtonVisible="False" x:Name="PropertySheetTabView"></TabView>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Width="100" Content="OK"/>
+            <Button Width="100" Content="Apply"/>
+        </StackPanel>
+    </StackPanel>
 </Window>

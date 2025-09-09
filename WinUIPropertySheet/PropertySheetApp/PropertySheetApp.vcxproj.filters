@@ -48,8 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="PropertySheetApp_CLEAN.vcxproj" />
-    <None Include="PropertySheetApp_FINAL.vcxproj" />
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="PropertySheetApp.exe.manifest" />

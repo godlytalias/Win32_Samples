@@ -114,7 +114,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-		<Command>
+      <Command>
 			copy "..\$(Platform)\$(Configuration)\PropertySheetWinUI\PropertySheetWinUI.dll" "$(OutDir)"
 			copy "..\$(Platform)\$(Configuration)\PropertySheetWinUI\PropertySheetWinUI.winmd" "$(OutDir)"
 			copy "..\$(Platform)\$(Configuration)\PropertySheetWinUI\Microsoft.WindowsAppRuntime.Bootstrap.dll" "$(OutDir)"
@@ -134,7 +134,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-		<Command>
+      <Command>
 			copy "..\$(Platform)\$(Configuration)\PropertySheetWinUI\PropertySheetWinUI.dll" "$(OutDir)"
 			copy "..\$(Platform)\$(Configuration)\PropertySheetWinUI\PropertySheetWinUI.winmd" "$(OutDir)"
 			copy "..\$(Platform)\$(Configuration)\PropertySheetWinUI\Microsoft.WindowsAppRuntime.Bootstrap.dll" "$(OutDir)"
@@ -156,7 +156,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-		<Command>
+      <Command>
 			copy "..\$(Platform)\$(Configuration)\PropertySheetWinUI\PropertySheetWinUI.dll" "$(OutDir)"
 			copy "..\$(Platform)\$(Configuration)\PropertySheetWinUI\PropertySheetWinUI.winmd" "$(OutDir)"
 			copy "..\$(Platform)\$(Configuration)\PropertySheetWinUI\Microsoft.WindowsAppRuntime.Bootstrap.dll" "$(OutDir)"

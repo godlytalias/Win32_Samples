@@ -18,4 +18,48 @@ namespace winrt::BackdropApp::implementation
     {
         MainButton().Content(box_value(L"Clicked"));
     }
+
+    void BlankUserControl::InitializeAcrylicBackdrop()
+    {
+        if (m_backdropController != nullptr)
+        {
+            return;
+        }
+        auto backdropconfig = winrt::Microsoft::UI::Composition::SystemBackdrops::SystemBackdropConfiguration();
+        auto acrylicbackdrop = winrt::Microsoft::UI::Composition::SystemBackdrops::DesktopAcrylicController();
+        m_backdropController = acrylicbackdrop;
+        acrylicbackdrop.LuminosityOpacity(0.0);
+        auto color = winrt::Windows::UI::Color{ 0, 255, 255, 0 };
+        acrylicbackdrop.TintColor(color);
+        acrylicbackdrop.SetSystemBackdropConfiguration(backdropconfig);
+	}
+
+    void BlankUserControl::CreateAcrylicOnButton()
+    {
+        InitializeAcrylicBackdrop();
+
+        auto backdroplink = winrt::Microsoft::UI::Content::ContentExternalBackdropLink::Create(currentWindow.Compositor());
+        m_backdroptarget = backdroplink;
+        m_backdropController.AddSystemBackdropTarget(m_backdroptarget);
+        winrt::Microsoft::UI::Xaml::Hosting::ElementCompositionPreview::SetElementChildVisual(backdrop(), backdroplink.PlacementVisual());
+
+
+        MainButton().Loaded([this, backdroplink](auto const&, auto const&) {
+			AdjustPlacementVisualForButton(backdroplink);
+        });
+    }
+
+    void BlankUserControl::AdjustPlacementVisualForButton(winrt::Microsoft::UI::Content::ContentExternalBackdropLink const& backdroplink)
+    {
+        backdroplink.PlacementVisual().Size(backdrop().ActualSize());
+        backdroplink.PlacementVisual().Offset(backdrop().ActualOffset());
+        auto backdropSize = backdrop().ActualSize();
+        auto backdropOffset = backdrop().ActualOffset();
+        auto rect = currentWindow.Compositor().CreateRectangleClip(backdropOffset.x, backdropOffset.y, backdropOffset.x + backdropSize.x, backdropOffset.y + backdropSize.y);
+        rect.TopLeftRadius({ 8.0, 8.0 });
+        rect.TopRightRadius({ 8.0, 8.0 });
+        rect.BottomLeftRadius({ 8.0, 8.0 });
+        rect.BottomRightRadius({ 8.0, 8.0 });
+        backdroplink.PlacementVisual().Clip(rect);
+	}
 }

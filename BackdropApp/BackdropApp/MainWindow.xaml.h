@@ -12,15 +12,7 @@ namespace winrt::BackdropApp::implementation
 {
     struct MainWindow : MainWindowT<MainWindow>
     {
-        MainWindow()
-        {
-            // Xaml objects should not call InitializeComponent during construction.
-            // See https://github.com/microsoft/cppwinrt/tree/master/nuget#initializecomponent
-            auto content = winrt::BackdropApp::BlankUserControl();
-            content.CurrentWindow(this->try_as<winrt::Microsoft::UI::Xaml::Window>());
-            content.init();
-            Content(content);
-        }
+        MainWindow();
 
         int32_t MyProperty();
         void MyProperty(int32_t value);

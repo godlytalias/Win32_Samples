@@ -25,40 +25,14 @@ namespace winrt::BackdropApp::implementation
         {
             currentWindow = value;
         }
-
-
-        void init()
-        {
-            auto backdropconfig = winrt::Microsoft::UI::Composition::SystemBackdrops::SystemBackdropConfiguration();
-            auto acrylicbackdrop = winrt::Microsoft::UI::Composition::SystemBackdrops::DesktopAcrylicController();
-            m_backdropController = acrylicbackdrop;
-            acrylicbackdrop.LuminosityOpacity(0.0);
-            auto color = winrt::Windows::UI::Color{ 0, 255, 255, 0 };
-            acrylicbackdrop.TintColor(color);
-            acrylicbackdrop.SetSystemBackdropConfiguration(backdropconfig);
-            auto backdroplink = winrt::Microsoft::UI::Content::ContentExternalBackdropLink::Create(currentWindow.Compositor());
-            backdroptarget = backdroplink;
-            acrylicbackdrop.AddSystemBackdropTarget(backdroptarget);
-            backdroplink.ExternalBackdropBorderMode(winrt::Microsoft::UI::Composition::CompositionBorderMode::Inherit);
-            winrt::Microsoft::UI::Xaml::Hosting::ElementCompositionPreview::SetElementChildVisual(backdrop(), backdroplink.PlacementVisual());
-
-
-            MainButton().Loaded([this, backdroplink](auto const&, auto const&) {
-                backdroplink.PlacementVisual().Size(backdrop().ActualSize());
-                backdroplink.PlacementVisual().Offset(backdrop().ActualOffset());
-                auto backdropSize = backdrop().ActualSize();
-                auto backdropOffset = backdrop().ActualOffset();
-                auto rect = currentWindow.Compositor().CreateRectangleClip(backdropOffset.x, backdropOffset.y, backdropOffset.x + backdropSize.x, backdropOffset.y + backdropSize.y);
-                rect.TopLeftRadius({ 8.0, 8.0 });
-                rect.TopRightRadius({ 8.0, 8.0 });
-                rect.BottomLeftRadius({ 8.0, 8.0 });
-                rect.BottomRightRadius({ 8.0, 8.0 });
-                backdroplink.PlacementVisual().Clip(rect);
-            });
-        }
-        winrt::Microsoft::UI::Composition::SystemBackdrops::ISystemBackdropControllerWithTargets m_backdropController{ nullptr };
-        winrt::Microsoft::UI::Composition::ICompositionSupportsSystemBackdrop backdroptarget;
+        void CreateAcrylicOnButton();
         void ClickHandler(Windows::Foundation::IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args);
+
+    private:
+        void InitializeAcrylicBackdrop();
+		void AdjustPlacementVisualForButton(winrt::Microsoft::UI::Content::ContentExternalBackdropLink const& backdroplink);
+        winrt::Microsoft::UI::Composition::SystemBackdrops::ISystemBackdropControllerWithTargets m_backdropController{ nullptr };
+        winrt::Microsoft::UI::Composition::ICompositionSupportsSystemBackdrop m_backdroptarget{ nullptr };
         winrt::Microsoft::UI::Xaml::Window currentWindow{ nullptr };
     };
 

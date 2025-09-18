@@ -5,6 +5,6 @@ namespace BackdropApp
     {
         BlankUserControl();
         Microsoft.UI.Xaml.Window CurrentWindow;
-        void init();
+        void CreateAcrylicOnButton();
     }
 }

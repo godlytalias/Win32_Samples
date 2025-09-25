@@ -3,6 +3,7 @@
 #if __has_include("BlankUserControl.g.cpp")
 #include "BlankUserControl.g.cpp"
 #endif
+#include <roapi.h>
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 
@@ -37,7 +38,9 @@ namespace winrt::BackdropApp::implementation
     {
         InitializeAcrylicBackdrop();
 
-        auto backdroplink = winrt::MUCInternal::ContentExternalBackdropLink::Create(CurrentWindow().Compositor());
+        auto backdroplink = winrt::BackdropApp::ContentExternalBackdropLink::Create(CurrentWindow().Compositor());
+
+
         m_backdroptarget = backdroplink;
         m_backdropController.AddSystemBackdropTarget(m_backdroptarget);
         winrt::Microsoft::UI::Xaml::Hosting::ElementCompositionPreview::SetElementChildVisual(backdropContainer(), backdroplink.PlacementVisual());
@@ -48,7 +51,7 @@ namespace winrt::BackdropApp::implementation
         });
     }
 
-    void BlankUserControl::AdjustPlacementVisualForButton(winrt::MUCInternal::ContentExternalBackdropLink const& backdroplink)
+    void BlankUserControl::AdjustPlacementVisualForButton(winrt::BackdropApp::ContentExternalBackdropLink const& backdroplink)
     {
         backdroplink.PlacementVisual().Size(backdropContainer().ActualSize());
         backdroplink.PlacementVisual().Offset(backdropContainer().ActualOffset());
@@ -63,11 +66,20 @@ namespace winrt::BackdropApp::implementation
 	}
 }
 
-
-WINRT_EXPORT namespace winrt::MUCInternal
+void* winrt_make_BackdropApp_ContentExternalBackdropLink()
 {
-    winrt::MUCInternal::ContentExternalBackdropLink ContentExternalBackdropLink::Create(winrt::Microsoft::UI::Composition::Compositor const& compositor)
+    return nullptr;
+}
+WINRT_EXPORT namespace winrt::BackdropApp
+{
+    winrt::BackdropApp::ContentExternalBackdropLink ContentExternalBackdropLink::Create(winrt::Microsoft::UI::Composition::Compositor const& compositor)
     {
-        return MUCInternal::implementation::ContentExternalBackdropLink::Create(compositor);
+        winrt::guid IContentExternalBackdropLinkStaticsGuid{ 0x46CAC6FB, 0xBB51, 0x510A, { 0x95,0x8D,0xE0,0xEB,0x41,0x60,0xF6,0x78 } };
+        winrt::com_ptr<winrt::BackdropApp::IContentExternalBackdropLinkStatics> factory;
+        winrt::hstring activationClass = L"Microsoft.UI.Content.ContentExternalBackdropLink";
+        RoGetActivationFactory(static_cast<HSTRING>(winrt::get_abi(activationClass)), IContentExternalBackdropLinkStaticsGuid, reinterpret_cast<void**>(&factory));
+        winrt::BackdropApp::ContentExternalBackdropLink instance{ nullptr };
+        factory->Create(winrt::get_abi(compositor), reinterpret_cast<void**>(&instance));
+		return instance;
     }
 }

@@ -9,7 +9,7 @@
 #include <winrt/Windows.UI.h>
 #include <winrt/BackdropApp.h>
 #include "BlankUserControl.g.h"
-#include "ContentExternalBackdropLink.h"
+#include "ContentExternalBackdropLink.g.h"
 
 namespace winrt::BackdropApp::implementation
 {
@@ -31,7 +31,7 @@ namespace winrt::BackdropApp::implementation
 
     private:
         void InitializeAcrylicBackdrop();
-		void AdjustPlacementVisualForButton(winrt::MUCInternal::ContentExternalBackdropLink const& backdroplink);
+		void AdjustPlacementVisualForButton(winrt::BackdropApp::ContentExternalBackdropLink const& backdroplink);
         winrt::Microsoft::UI::Composition::SystemBackdrops::ISystemBackdropControllerWithTargets m_backdropController{ nullptr };
         winrt::Microsoft::UI::Composition::ICompositionSupportsSystemBackdrop m_backdroptarget{ nullptr };
         winrt::Microsoft::UI::Xaml::Window currentWindow{ nullptr };

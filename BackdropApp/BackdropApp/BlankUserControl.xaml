@@ -11,7 +11,7 @@
         <Grid.Resources>
             <CornerRadius x:Key="ControlCornerRadius">8</CornerRadius>
         </Grid.Resources>
-        <Grid x:Name="backdrop"></Grid>
+        <Grid x:Name="backdropContainer"></Grid>
         <Button x:Name="MainButton" Click="ClickHandler">Click Me</Button>
     </Grid>
 </UserControl>

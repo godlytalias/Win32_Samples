@@ -7,19 +7,4 @@ namespace BackdropApp
         Microsoft.UI.Xaml.Window CurrentWindow;
         void CreateAcrylicOnButton();
     }
-
-
-    runtimeclass ContentExternalBackdropLink :
-        Windows.Foundation.IClosable,
-        Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop
-    {
-        static ContentExternalBackdropLink Create(
-            Microsoft.UI.Composition.Compositor compositor);
-
-        Microsoft.UI.Dispatching.DispatcherQueue DispatcherQueue { get; };
-
-        Microsoft.UI.Composition.CompositionBorderMode ExternalBackdropBorderMode;
-
-        Microsoft.UI.Composition.Visual PlacementVisual { get; };
-    }
 }

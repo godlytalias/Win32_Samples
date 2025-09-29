@@ -5,7 +5,7 @@
 #endif
 #include <roapi.h>
 using namespace winrt;
-using namespace Microsoft::UI::Xaml;
+using namespace winrt::Microsoft::UI::Xaml;
 
 namespace winrt::BackdropApp::implementation
 {
@@ -37,13 +37,23 @@ namespace winrt::BackdropApp::implementation
     void BlankUserControl::CreateAcrylicOnButton()
     {
         InitializeAcrylicBackdrop();
+		ABI::Microsoft::UI::Content::IContentExternalBackdropLink* backdroplink{ nullptr };
+        if (ABI::Microsoft::UI::Content::ContentExternalBackdropLink::Create(CurrentWindow().Compositor(), &backdroplink) == FALSE)
+        {
+            return;
+		}
+        
+        // Query for the ICompositionSupportsSystemBackdrop interface
+        winrt::com_ptr<::IInspectable> systemBackdropInspectable;
+        winrt::check_hresult(backdroplink->QueryInterface(__uuidof(::IInspectable), systemBackdropInspectable.put_void()));
+        
+        // Convert to WinRT projected type
+        m_backdroptarget = systemBackdropInspectable.as<winrt::Microsoft::UI::Composition::ICompositionSupportsSystemBackdrop>();
 
-        auto backdroplink = winrt::BackdropApp::ContentExternalBackdropLink::Create(CurrentWindow().Compositor());
-
-
-        m_backdroptarget = backdroplink;
         m_backdropController.AddSystemBackdropTarget(m_backdroptarget);
-        winrt::Microsoft::UI::Xaml::Hosting::ElementCompositionPreview::SetElementChildVisual(backdropContainer(), backdroplink.PlacementVisual());
+        winrt::Microsoft::UI::Composition::Visual placementVisual{ nullptr };
+        backdroplink->get_PlacementVisual(reinterpret_cast<ABI::Microsoft::UI::Composition::IVisual**>(put_abi(placementVisual)));
+        winrt::Microsoft::UI::Xaml::Hosting::ElementCompositionPreview::SetElementChildVisual(backdropContainer(), placementVisual);
 
 
         MainButton().Loaded([this, backdroplink](auto const&, auto const&) {
@@ -51,10 +61,12 @@ namespace winrt::BackdropApp::implementation
         });
     }
 
-    void BlankUserControl::AdjustPlacementVisualForButton(winrt::BackdropApp::ContentExternalBackdropLink const& backdroplink)
+    void BlankUserControl::AdjustPlacementVisualForButton(ABI::Microsoft::UI::Content::IContentExternalBackdropLink* backdroplink)
     {
-        backdroplink.PlacementVisual().Size(backdropContainer().ActualSize());
-        backdroplink.PlacementVisual().Offset(backdropContainer().ActualOffset());
+        winrt::Microsoft::UI::Composition::Visual placementVisual{ nullptr };
+		backdroplink->get_PlacementVisual(reinterpret_cast<ABI::Microsoft::UI::Composition::IVisual**>(put_abi(placementVisual)));
+        placementVisual.Size(backdropContainer().ActualSize());
+        placementVisual.Offset(backdropContainer().ActualOffset());
         auto backdropSize = backdropContainer().ActualSize();
         auto backdropOffset = backdropContainer().ActualOffset();
         auto rect = CurrentWindow().Compositor().CreateRectangleClip(backdropOffset.x, backdropOffset.y, backdropOffset.x + backdropSize.x, backdropOffset.y + backdropSize.y);
@@ -62,24 +74,6 @@ namespace winrt::BackdropApp::implementation
         rect.TopRightRadius({ 8.0, 8.0 });
         rect.BottomLeftRadius({ 8.0, 8.0 });
         rect.BottomRightRadius({ 8.0, 8.0 });
-        backdroplink.PlacementVisual().Clip(rect);
+        placementVisual.Clip(rect);
 	}
-}
-
-void* winrt_make_BackdropApp_ContentExternalBackdropLink()
-{
-    return nullptr;
-}
-WINRT_EXPORT namespace winrt::BackdropApp
-{
-    winrt::BackdropApp::ContentExternalBackdropLink ContentExternalBackdropLink::Create(winrt::Microsoft::UI::Composition::Compositor const& compositor)
-    {
-        winrt::guid IContentExternalBackdropLinkStaticsGuid{ 0x46CAC6FB, 0xBB51, 0x510A, { 0x95,0x8D,0xE0,0xEB,0x41,0x60,0xF6,0x78 } };
-        winrt::com_ptr<winrt::BackdropApp::IContentExternalBackdropLinkStatics> factory;
-        winrt::hstring activationClass = L"Microsoft.UI.Content.ContentExternalBackdropLink";
-        RoGetActivationFactory(static_cast<HSTRING>(winrt::get_abi(activationClass)), IContentExternalBackdropLinkStaticsGuid, reinterpret_cast<void**>(&factory));
-        winrt::BackdropApp::ContentExternalBackdropLink instance{ nullptr };
-        factory->Create(winrt::get_abi(compositor), reinterpret_cast<void**>(&instance));
-		return instance;
-    }
 }

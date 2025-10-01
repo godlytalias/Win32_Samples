@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "BackdropAppC# (Package)": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": true
+    },
+    "BackdropAppC# (Unpackaged)": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

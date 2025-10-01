@@ -18,9 +18,9 @@ namespace Microsoft.UI.Content
 {
     [WindowsRuntimeType("Microsoft.UI")]
     [global::System.Runtime.InteropServices.Guid("1054BF83-B35B-5FDE-8DD7-AC3BB3E6CE27")]
-    [WindowsRuntimeHelperType(typeof(ABI.Microsoft.UI.Content.IContentExternalBackdropLink))]
+    [WindowsRuntimeHelperType(typeof(ABI.Microsoft.UI.Content.IExperimentalContentExternalBackdropLink))]
     [ContractVersion(typeof(WindowsAppSDKContract), 65542u)]
-    internal interface IContentExternalBackdropLink
+    internal interface IExperimentalContentExternalBackdropLink
     {
         DispatcherQueue DispatcherQueue { get; }
 
@@ -30,11 +30,11 @@ namespace Microsoft.UI.Content
     }
 
     [WindowsRuntimeType("Microsoft.UI")]
-    [WindowsRuntimeHelperType(typeof(ABI.Microsoft.UI.Content.ContentExternalBackdropLink))]
-    [ContentExternalBackdropLinkRcwFactory]
-    [ProjectedRuntimeClass(typeof(IContentExternalBackdropLink))]
+    [WindowsRuntimeHelperType(typeof(ABI.Microsoft.UI.Content.ExperimentalContentExternalBackdropLink))]
+    [ExperimentalContentExternalBackdropLinkRcwFactory]
+    [ProjectedRuntimeClass(typeof(IExperimentalContentExternalBackdropLink))]
     [ContractVersion(typeof(WindowsAppSDKContract), 65542u)]
-    public sealed class ContentExternalBackdropLink : IDisposable, Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop, ICustomQueryInterface, IWinRTObject, IDynamicInterfaceCastable, IEquatable<ContentExternalBackdropLink>
+    public sealed class ExperimentalContentExternalBackdropLink : IDisposable, Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop, ICustomQueryInterface, IWinRTObject, IDynamicInterfaceCastable, IEquatable<ExperimentalContentExternalBackdropLink>
     {
         [StructLayout(LayoutKind.Sequential, Size = 1)]
         private struct InterfaceTag<I>
@@ -47,7 +47,7 @@ namespace Microsoft.UI.Content
 
         private volatile IObjectReference ___objRef_global__Microsoft_UI_Composition_ICompositionSupportsSystemBackdrop;
 
-        private static volatile IObjectReference ___objRef_global__Microsoft_UI_Content_IContentExternalBackdropLinkStatics;
+        private static volatile IObjectReference ___objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics;
 
         private volatile ConcurrentDictionary<RuntimeTypeHandle, IObjectReference> _queryInterfaceCache;
 
@@ -66,23 +66,32 @@ namespace Microsoft.UI.Content
             }
         }
 
-        private IObjectReference _objRef_global__Microsoft_UI_Content_IContentExternalBackdropLink => _inner;
+        private IObjectReference _objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLink => _inner;
 
         private IObjectReference _objRef_global__System_IDisposable => ___objRef_global__System_IDisposable ?? Make___objRef_global__System_IDisposable();
 
         private IObjectReference _objRef_global__Microsoft_UI_Composition_ICompositionSupportsSystemBackdrop => ___objRef_global__Microsoft_UI_Composition_ICompositionSupportsSystemBackdrop ?? Make___objRef_global__Microsoft_UI_Composition_ICompositionSupportsSystemBackdrop();
 
-        private static IObjectReference _objRef_global__Microsoft_UI_Content_IContentExternalBackdropLinkStatics
+        private static IObjectReference _objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics
         {
             get
             {
-                IObjectReference __objRef_global__Microsoft_UI_Content_IContentExternalBackdropLinkStatics = ___objRef_global__Microsoft_UI_Content_IContentExternalBackdropLinkStatics;
-                if (__objRef_global__Microsoft_UI_Content_IContentExternalBackdropLinkStatics != null && __objRef_global__Microsoft_UI_Content_IContentExternalBackdropLinkStatics.IsInCurrentContext)
+                IObjectReference __objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics = ___objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics;
+                if (__objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics != null && __objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics.IsInCurrentContext)
                 {
-                    return __objRef_global__Microsoft_UI_Content_IContentExternalBackdropLinkStatics;
+                    return __objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics;
                 }
 
-                return ___objRef_global__Microsoft_UI_Content_IContentExternalBackdropLinkStatics = ActivationFactory.Get("Microsoft.UI.Content.ContentExternalBackdropLink", IContentExternalBackdropLinkStaticsMethods.IID);
+                try
+                {
+                    ___objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics = ActivationFactory.Get("Microsoft.UI.Content.ContentExternalBackdropLink", IExperimentalContentExternalBackdropLinkStaticsMethods.IID);
+                }
+                catch
+                {
+                    ___objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics = null;
+                }
+
+                return ___objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics;
             }
         }
 
@@ -94,21 +103,21 @@ namespace Microsoft.UI.Content
 
         ConcurrentDictionary<RuntimeTypeHandle, object> IWinRTObject.AdditionalTypeData => _additionalTypeData ?? MakeAdditionalTypeData();
 
-        public DispatcherQueue DispatcherQueue => IContentExternalBackdropLinkMethods.get_DispatcherQueue(_objRef_global__Microsoft_UI_Content_IContentExternalBackdropLink);
+        public DispatcherQueue DispatcherQueue => IExperimentalContentExternalBackdropLinkMethods.get_DispatcherQueue(_objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLink);
 
         public Microsoft.UI.Composition.CompositionBorderMode ExternalBackdropBorderMode
         {
             get
             {
-                return IContentExternalBackdropLinkMethods.get_ExternalBackdropBorderMode(_objRef_global__Microsoft_UI_Content_IContentExternalBackdropLink);
+                return IExperimentalContentExternalBackdropLinkMethods.get_ExternalBackdropBorderMode(_objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLink);
             }
             set
             {
-                IContentExternalBackdropLinkMethods.set_ExternalBackdropBorderMode(_objRef_global__Microsoft_UI_Content_IContentExternalBackdropLink, value);
+                IExperimentalContentExternalBackdropLinkMethods.set_ExternalBackdropBorderMode(_objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLink, value);
             }
         }
 
-        public Microsoft.UI.Composition.Visual PlacementVisual => IContentExternalBackdropLinkMethods.get_PlacementVisual(_objRef_global__Microsoft_UI_Content_IContentExternalBackdropLink);
+        public Microsoft.UI.Composition.Visual PlacementVisual => IExperimentalContentExternalBackdropLinkMethods.get_PlacementVisual(_objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLink);
 
         public global::Windows.UI.Composition.CompositionBrush SystemBackdrop
         {
@@ -136,49 +145,49 @@ namespace Microsoft.UI.Content
 
         public static I As<I>()
         {
-            return ActivationFactory.Get("Microsoft.UI.Content.ContentExternalBackdropLink").AsInterface<I>();
+            return ActivationFactory.Get("Microsoft.UI.Content.ExperimentalContentExternalBackdropLink").AsInterface<I>();
         }
 
-        public static ContentExternalBackdropLink Create(Microsoft.UI.Composition.Compositor compositor)
+        public static ExperimentalContentExternalBackdropLink Create(Microsoft.UI.Composition.Compositor compositor)
         {
-            return IContentExternalBackdropLinkStaticsMethods.Create(_objRef_global__Microsoft_UI_Content_IContentExternalBackdropLinkStatics, compositor);
+            return IExperimentalContentExternalBackdropLinkStaticsMethods.Create(_objRef_global__Microsoft_UI_Content_IExperimentalContentExternalBackdropLinkStatics, compositor);
         }
 
-        public static ContentExternalBackdropLink FromAbi(IntPtr thisPtr)
+        public static ExperimentalContentExternalBackdropLink FromAbi(IntPtr thisPtr)
         {
             if (thisPtr == IntPtr.Zero)
             {
                 return null;
             }
 
-            return MarshalInspectable<ContentExternalBackdropLink>.FromAbi(thisPtr);
+            return MarshalInspectable<ExperimentalContentExternalBackdropLink>.FromAbi(thisPtr);
         }
 
-        internal ContentExternalBackdropLink(IObjectReference objRef)
+        internal ExperimentalContentExternalBackdropLink(IObjectReference objRef)
         {
-            _inner = objRef.As(IContentExternalBackdropLinkMethods.IID);
+            _inner = objRef.As(IExperimentalContentExternalBackdropLinkMethods.IID);
         }
 
-        public static bool operator ==(ContentExternalBackdropLink x, ContentExternalBackdropLink y)
+        public static bool operator ==(ExperimentalContentExternalBackdropLink x, ExperimentalContentExternalBackdropLink y)
         {
             return (x?.ThisPtr ?? IntPtr.Zero) == (y?.ThisPtr ?? IntPtr.Zero);
         }
 
-        public static bool operator !=(ContentExternalBackdropLink x, ContentExternalBackdropLink y)
+        public static bool operator !=(ExperimentalContentExternalBackdropLink x, ExperimentalContentExternalBackdropLink y)
         {
             return !(x == y);
         }
 
-        public bool Equals(ContentExternalBackdropLink other)
+        public bool Equals(ExperimentalContentExternalBackdropLink other)
         {
             return this == other;
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is ContentExternalBackdropLink contentExternalBackdropLink)
+            if (obj is ExperimentalContentExternalBackdropLink ExperimentalContentExternalBackdropLink)
             {
-                return this == contentExternalBackdropLink;
+                return this == ExperimentalContentExternalBackdropLink;
             }
 
             return false;
@@ -232,15 +241,15 @@ namespace Microsoft.UI.Content
 namespace ABI.Microsoft.UI.Content
 {
     [EditorBrowsable(EditorBrowsableState.Never)]
-    internal sealed class ContentExternalBackdropLinkRcwFactoryAttribute : WinRTImplementationTypeRcwFactoryAttribute
+    internal sealed class ExperimentalContentExternalBackdropLinkRcwFactoryAttribute : WinRTImplementationTypeRcwFactoryAttribute
     {
         public override object CreateInstance(IInspectable inspectable)
         {
-            return new global::Microsoft.UI.Content.ContentExternalBackdropLink(inspectable.ObjRef);
+            return new global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink(inspectable.ObjRef);
         }
     }
 
-    internal static class IContentExternalBackdropLinkMethods
+    internal static class IExperimentalContentExternalBackdropLinkMethods
     {
         public static ref readonly Guid IID
         {
@@ -300,7 +309,7 @@ namespace ABI.Microsoft.UI.Content
         }
     }
 
-    internal static class IContentExternalBackdropLinkStaticsMethods
+    internal static class IExperimentalContentExternalBackdropLinkStaticsMethods
     {
         public static ref readonly Guid IID
         {
@@ -315,8 +324,12 @@ namespace ABI.Microsoft.UI.Content
             }
         }
 
-        internal unsafe static global::Microsoft.UI.Content.ContentExternalBackdropLink Create(IObjectReference _obj, global::Microsoft.UI.Composition.Compositor compositor)
+        internal unsafe static global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink Create(IObjectReference _obj, global::Microsoft.UI.Composition.Compositor compositor)
         {
+            if (_obj == null)
+            {
+                return null;
+            }
             IntPtr thisPtr = _obj.ThisPtr;
             ObjectReferenceValue value = default(ObjectReferenceValue);
             IntPtr intPtr = default(IntPtr);
@@ -324,37 +337,42 @@ namespace ABI.Microsoft.UI.Content
             {
                 value = ABI.Microsoft.UI.Composition.Compositor.CreateMarshaler2(compositor);
                 ExceptionHelpers.ThrowExceptionForHR(((delegate* unmanaged[Stdcall]<IntPtr, IntPtr, IntPtr*, int>)(*(IntPtr*)((nint)(*(IntPtr*)(void*)thisPtr) + (nint)6 * (nint)sizeof(delegate* unmanaged[Stdcall]<IntPtr, IntPtr, IntPtr*, int>))))(thisPtr, MarshalInspectable<object>.GetAbi(value), &intPtr));
-                return ContentExternalBackdropLink.FromAbi(intPtr);
+                return ExperimentalContentExternalBackdropLink.FromAbi(intPtr);
+            }
+            catch
+            {
+                global::System.Console.WriteLine("Exception in IExperimentalContentExternalBackdropLinkStaticsMethods.Create");
+                return null;
             }
             finally
             {
                 MarshalInspectable<object>.DisposeMarshaler(value);
-                ContentExternalBackdropLink.DisposeAbi(intPtr);
+                ExperimentalContentExternalBackdropLink.DisposeAbi(intPtr);
             }
         }
     }
     [global::System.Runtime.InteropServices.Guid("1054BF83-B35B-5FDE-8DD7-AC3BB3E6CE27")]
-    internal interface IContentExternalBackdropLink
+    internal interface IExperimentalContentExternalBackdropLink
     {
     }
 
     [StructLayout(LayoutKind.Sequential, Size = 1)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public struct ContentExternalBackdropLink
+    public struct ExperimentalContentExternalBackdropLink
     {
-        public static IObjectReference CreateMarshaler(global::Microsoft.UI.Content.ContentExternalBackdropLink obj)
+        public static IObjectReference CreateMarshaler(global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink obj)
         {
             if ((object)obj != null)
             {
-                return MarshalInspectable<global::Microsoft.UI.Content.ContentExternalBackdropLink>.CreateMarshaler<IUnknownVftbl>(obj, IContentExternalBackdropLinkMethods.IID);
+                return MarshalInspectable<global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink>.CreateMarshaler<IUnknownVftbl>(obj, IExperimentalContentExternalBackdropLinkMethods.IID);
             }
 
             return null;
         }
 
-        public static ObjectReferenceValue CreateMarshaler2(global::Microsoft.UI.Content.ContentExternalBackdropLink obj)
+        public static ObjectReferenceValue CreateMarshaler2(global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink obj)
         {
-            return MarshalInspectable<object>.CreateMarshaler2(obj, IContentExternalBackdropLinkMethods.IID);
+            return MarshalInspectable<object>.CreateMarshaler2(obj, IExperimentalContentExternalBackdropLinkMethods.IID);
         }
 
         public static IntPtr GetAbi(IObjectReference value)
@@ -367,12 +385,12 @@ namespace ABI.Microsoft.UI.Content
             return IntPtr.Zero;
         }
 
-        public static global::Microsoft.UI.Content.ContentExternalBackdropLink FromAbi(IntPtr thisPtr)
+        public static global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink FromAbi(IntPtr thisPtr)
         {
-            return global::Microsoft.UI.Content.ContentExternalBackdropLink.FromAbi(thisPtr);
+            return global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink.FromAbi(thisPtr);
         }
 
-        public static IntPtr FromManaged(global::Microsoft.UI.Content.ContentExternalBackdropLink obj)
+        public static IntPtr FromManaged(global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink obj)
         {
             if ((object)obj != null)
             {
@@ -382,29 +400,29 @@ namespace ABI.Microsoft.UI.Content
             return IntPtr.Zero;
         }
 
-        public static MarshalInterfaceHelper<global::Microsoft.UI.Content.ContentExternalBackdropLink>.MarshalerArray CreateMarshalerArray(global::Microsoft.UI.Content.ContentExternalBackdropLink[] array)
+        public static MarshalInterfaceHelper<global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink>.MarshalerArray CreateMarshalerArray(global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink[] array)
         {
-            return MarshalInterfaceHelper<global::Microsoft.UI.Content.ContentExternalBackdropLink>.CreateMarshalerArray2(array, (global::Microsoft.UI.Content.ContentExternalBackdropLink o) => CreateMarshaler2(o));
+            return MarshalInterfaceHelper<global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink>.CreateMarshalerArray2(array, (global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink o) => CreateMarshaler2(o));
         }
 
         public static (int length, IntPtr data) GetAbiArray(object box)
         {
-            return MarshalInterfaceHelper<global::Microsoft.UI.Content.ContentExternalBackdropLink>.GetAbiArray(box);
+            return MarshalInterfaceHelper<global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink>.GetAbiArray(box);
         }
 
-        public static global::Microsoft.UI.Content.ContentExternalBackdropLink[] FromAbiArray(object box)
+        public static global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink[] FromAbiArray(object box)
         {
-            return MarshalInterfaceHelper<global::Microsoft.UI.Content.ContentExternalBackdropLink>.FromAbiArray(box, FromAbi);
+            return MarshalInterfaceHelper<global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink>.FromAbiArray(box, FromAbi);
         }
 
-        public static void CopyAbiArray(global::Microsoft.UI.Content.ContentExternalBackdropLink[] array, object box)
+        public static void CopyAbiArray(global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink[] array, object box)
         {
-            MarshalInterfaceHelper<global::Microsoft.UI.Content.ContentExternalBackdropLink>.CopyAbiArray(array, box, FromAbi);
+            MarshalInterfaceHelper<global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink>.CopyAbiArray(array, box, FromAbi);
         }
 
-        public static (int length, IntPtr data) FromManagedArray(global::Microsoft.UI.Content.ContentExternalBackdropLink[] array)
+        public static (int length, IntPtr data) FromManagedArray(global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink[] array)
         {
-            return MarshalInterfaceHelper<global::Microsoft.UI.Content.ContentExternalBackdropLink>.FromManagedArray(array, (global::Microsoft.UI.Content.ContentExternalBackdropLink o) => FromManaged(o));
+            return MarshalInterfaceHelper<global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink>.FromManagedArray(array, (global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink o) => FromManaged(o));
         }
 
         public static void DisposeMarshaler(IObjectReference value)
@@ -412,9 +430,9 @@ namespace ABI.Microsoft.UI.Content
             MarshalInspectable<object>.DisposeMarshaler(value);
         }
 
-        public static void DisposeMarshalerArray(MarshalInterfaceHelper<global::Microsoft.UI.Content.ContentExternalBackdropLink>.MarshalerArray array)
+        public static void DisposeMarshalerArray(MarshalInterfaceHelper<global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink>.MarshalerArray array)
         {
-            MarshalInterfaceHelper<global::Microsoft.UI.Content.ContentExternalBackdropLink>.DisposeMarshalerArray(array);
+            MarshalInterfaceHelper<global::Microsoft.UI.Content.ExperimentalContentExternalBackdropLink>.DisposeMarshalerArray(array);
         }
 
         public static void DisposeAbi(IntPtr abi)

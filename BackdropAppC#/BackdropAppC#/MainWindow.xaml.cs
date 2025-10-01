@@ -48,7 +48,12 @@ namespace BackdropAppC_
         {
             InitializeAcrylicBackdrop();
             var visual = Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(backdropRoot);
-            var backdropLink = Microsoft.UI.Content.ContentExternalBackdropLink.Create(visual.Compositor);
+            var backdropLink = Microsoft.UI.Content.ExperimentalContentExternalBackdropLink.Create(visual.Compositor);
+            if (backdropLink == null)
+            {
+                //TODO: HANDLE FALLBACK
+                return;
+            }
 
             var placementVisual = backdropLink.PlacementVisual;
             placementVisual.Size = new System.Numerics.Vector2((float)App._window.Bounds.Width, (float)App._window.Bounds.Height);

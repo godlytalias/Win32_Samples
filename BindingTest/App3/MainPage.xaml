@@ -1,0 +1,21 @@
+<Page
+    x:Class="App3.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App3">
+    <Page.Resources>
+        <!-- DataTemplate typed to IAllAppsTileViewModel -->
+        <DataTemplate x:Key="AllAppsTileTemplate" x:DataType="local:IAllAppsTileViewModel">
+            <StackPanel>
+                <!-- Bind to Logo property defined in base interface -->
+                <Image Source="{x:Bind Logo}" Width="48" Height="48"/>
+                <!-- Add other bindings as needed -->
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <ListView ItemsSource="{x:Bind ViewModel.AllAppsTiles}">
+        <ListView.ItemTemplate>
+            <StaticResource ResourceKey="AllAppsTileTemplate"/>
+        </ListView.ItemTemplate>
+    </ListView>
+</Page>

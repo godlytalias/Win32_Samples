@@ -152,6 +152,8 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="VerbHandler.h" />
+    <ClInclude Include="FilePropertySheetManager.h" />
+    <ClInclude Include="RecycleBinItemPropertySheetManager.h" />
     <ClInclude Include="VerbHandlerClassFactory.h" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +165,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="VerbHandler.cpp" />
+    <ClCompile Include="FilePropertySheetManager.cpp" />
+    <ClCompile Include="RecycleBinItemPropertySheetManager.cpp" />
     <ClCompile Include="VerbHandlerClassFactory.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "VerbHandler.h"
+#include "FilePropertySheetManager.h"
 
 namespace PropertiesVerb
 {
@@ -59,30 +60,24 @@ namespace PropertiesVerb
 
     void VerbHandler::ShowVerbMessage(IShellItemArray* psia)
     {
-        WCHAR szMessage[2048] = L"Verb executed from new DLL\r\n";
-
-        if (psia)
+        if (!psia)
         {
-            DWORD count = 0;
-            if (SUCCEEDED(psia->GetCount(&count)))
-            {
-                for (DWORD i = 0; i < count; i++)
-                {
-                    Microsoft::WRL::ComPtr<IShellItem> psi;
-                    if (SUCCEEDED(psia->GetItemAt(i, &psi)))
-                    {
-                        PWSTR pszName = nullptr;
-                        if (SUCCEEDED(psi->GetDisplayName(SIGDN_FILESYSPATH, &pszName)))
-                        {
-                            StringCchCatW(szMessage, ARRAYSIZE(szMessage), L"\r\n");
-                            StringCchCatW(szMessage, ARRAYSIZE(szMessage), pszName);
-                            CoTaskMemFree(pszName);
-                        }
-                    }
-                }
-            }
+            return;
         }
 
-        MessageBoxW(nullptr, szMessage, L"VerbHandler", MB_OK);
+        DWORD count = 0;
+        if (FAILED(psia->GetCount(&count)))
+        {
+            return;
+        }
+
+        for (DWORD i = 0; i < count; i++)
+        {
+            Microsoft::WRL::ComPtr<IShellItem> psi;
+            if (SUCCEEDED(psia->GetItemAt(i, &psi)))
+            {
+                FilePropertySheetManager::CreateAndShow(psi.Get());
+            }
+        }
     }
 }

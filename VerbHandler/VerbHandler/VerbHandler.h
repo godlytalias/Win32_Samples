@@ -4,6 +4,10 @@
 #include <wrl/module.h>
 #include <shlwapi.h>
 #include <strsafe.h>
+#include <propkey.h>
+#include <propsys.h>
+#include <knownfolders.h>
+#include <shlobj.h>
 
 // {C2F0A74D-5B89-4F1C-8D6E-2A9B7E4F1C03}
 static constexpr CLSID CLSID_VerbHandler =

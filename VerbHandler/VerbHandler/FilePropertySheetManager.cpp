@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "FilePropertySheetManager.h"
 #include "RecycleBinItemPropertySheetManager.h"
+#include "FilePropertySheetPresenter.h"
 #include <shlwapi.h>
 #include <strsafe.h>
 #include <propkey.h>
@@ -34,7 +35,8 @@ namespace PropertiesVerb
         if (manager)
         {
             manager->PopulateValueSet();
-            manager->ShowPropertySheet();
+            std::wstring serialized = manager->SerializeValueSet();
+            FilePropertySheetPresenter::Show(serialized);
         }
     }
 
@@ -247,9 +249,9 @@ namespace PropertiesVerb
         return std::wstring(szDate) + L" " + szTime;
     }
 
-    void FilePropertySheetManager::ShowPropertySheet() const
+    std::wstring FilePropertySheetManager::SerializeValueSet() const
     {
-        WCHAR szMessage[4096] = {};
+        std::wstring result;
 
         std::vector<std::wstring> displayOrder;
         GetDisplayOrder(displayOrder);
@@ -259,13 +261,13 @@ namespace PropertiesVerb
             auto it = _valueSet.find(key);
             if (it != _valueSet.end())
             {
-                StringCchCatW(szMessage, ARRAYSIZE(szMessage), it->first.c_str());
-                StringCchCatW(szMessage, ARRAYSIZE(szMessage), L": ");
-                StringCchCatW(szMessage, ARRAYSIZE(szMessage), it->second.c_str());
-                StringCchCatW(szMessage, ARRAYSIZE(szMessage), L"\r\n");
+                result += it->first;
+                result += L'=';
+                result += it->second;
+                result += L"\r\n";
             }
         }
 
-        MessageBoxW(nullptr, szMessage, L"Properties", MB_OK);
+        return result;
     }
 }

@@ -20,11 +20,12 @@ namespace PropertiesVerb
         virtual std::wstring PropertySheetType() const;
 
         virtual void PopulateValueSet();
-        void ShowPropertySheet() const;
+        std::wstring SerializeValueSet() const;
 
         const std::map<std::wstring, std::wstring>& GetValueSet() const;
 
     protected:
+        // FOR POC
         virtual void GetDisplayOrder(std::vector<std::wstring>& order) const;
 
         void PopulateFileName();

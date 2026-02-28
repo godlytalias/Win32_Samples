@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "VerbHandler.h"
-#include "FilePropertySheetManager.h"
+#include "Managers\FilePropertySheetManager.h"
 
 namespace PropertiesVerb
 {

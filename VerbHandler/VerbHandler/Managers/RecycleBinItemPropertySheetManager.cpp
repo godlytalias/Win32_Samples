@@ -18,31 +18,11 @@ namespace PropertiesVerb
     {
     }
 
-    std::wstring RecycleBinItemPropertySheetManager::PropertySheetType() const
-    {
-        return L"Recycle Bin Folder Item";
-    }
-
     void RecycleBinItemPropertySheetManager::PopulateValueSet()
     {
         FilePropertySheetManager::PopulateValueSet();
         PopulateOrigin();
         PopulateDeletedDate();
-    }
-
-    void RecycleBinItemPropertySheetManager::GetDisplayOrder(std::vector<std::wstring>& order) const
-    {
-        order = {
-            L"PropertySheet Type",
-            L"FileName",
-            L"FileType",
-            L"Origin",
-            L"FileSize",
-            L"Deleted Date",
-            L"CreatedDate",
-            L"Attributes",
-            L"IconPath",
-        };
     }
 
     void RecycleBinItemPropertySheetManager::PopulateOrigin()
@@ -72,5 +52,33 @@ namespace PropertiesVerb
         {
             _valueSet[L"Deleted Date"] = FormatFileTime(ft);
         }
+    }
+
+    std::wstring RecycleBinItemPropertySheetManager::SerializeGeneralPageData(const std::map<std::wstring, std::wstring>& entries) const
+    {
+		std::wstring result = L"";
+        result += L"FilePropertySheetPageKind=RecycleBinItemGeneral;";
+
+        for (const auto& entry : entries)
+        {
+            result += entry.first;
+            result += L'=';
+            result += entry.second;
+            result += L";";
+        }
+        return result;
+    }
+
+    std::wstring RecycleBinItemPropertySheetManager::SerializePageData(const std::map<std::wstring, std::wstring>& entries) const
+    {
+        std::wstring result;
+
+        result += SerializeGeneralPageData(entries);
+        if (!result.empty())
+        {
+            result.pop_back();
+        }
+
+        return result;
     }
 }

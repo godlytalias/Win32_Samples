@@ -8,13 +8,11 @@ namespace PropertiesVerb
     public:
         explicit RecycleBinItemPropertySheetManager(IShellItem* psi);
 
-        std::wstring PropertySheetType() const override;
         void PopulateValueSet() override;
-
-    protected:
-        void GetDisplayOrder(std::vector<std::wstring>& order) const override;
+        std::wstring SerializePageData(const std::map<std::wstring, std::wstring>& entries) const override;
 
     private:
+        std::wstring SerializeGeneralPageData(const std::map<std::wstring, std::wstring>& entries) const;
         void PopulateOrigin();
         void PopulateDeletedDate();
     };

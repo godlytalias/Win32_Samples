@@ -30,13 +30,16 @@
     <ClInclude Include="VerbHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FilePropertySheetManager.h">
+    <ClInclude Include="Managers\FilePropertySheetManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RecycleBinItemPropertySheetManager.h">
+    <ClInclude Include="Managers\RecycleBinItemPropertySheetManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FilePropertySheetPresenter.h">
+    <ClInclude Include="Presenters\FilePropertySheetPresenter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Presenters\RecycleBinItemGeneralPageView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,13 +56,16 @@
     <ClCompile Include="VerbHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FilePropertySheetManager.cpp">
+    <ClCompile Include="Managers\FilePropertySheetManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RecycleBinItemPropertySheetManager.cpp">
+    <ClCompile Include="Managers\RecycleBinItemPropertySheetManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FilePropertySheetPresenter.cpp">
+    <ClCompile Include="Presenters\FilePropertySheetPresenter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Presenters\RecycleBinItemGeneralPageView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
